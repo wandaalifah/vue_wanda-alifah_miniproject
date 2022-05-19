@@ -27,11 +27,14 @@
 
 <script>
 import gql from 'graphql-tag'
+import { mapActions } from 'vuex'
+// import { mapState } from 'vuex'
 
 export default {
   data() {
     return {
       latte: 1,
+      carts: [this.$store.state.carts],
     }
   },
   apollo: {
@@ -50,7 +53,7 @@ export default {
   },
   methods: {
     AddToCart: (id, url, menuName, price, name) => {
-      this.$store.dispatch('insertCart', {
+      mapActions('insertCart', {
         id,
         url,
         menuName,
@@ -58,6 +61,9 @@ export default {
         name,
       })
     },
+  },
+  mounted() {
+    return console.log(this.carts)
   },
 }
 </script>
