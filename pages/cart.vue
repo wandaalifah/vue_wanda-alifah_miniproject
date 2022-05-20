@@ -24,7 +24,14 @@
                     </v-list-item-action>
                 </v-list-item>
             </v-card>
-            <h2>Total :</h2>
+            <h2 class="mt-8">Total :</h2>
+            <v-spacer></v-spacer>
+            <v-btn 
+            class="mt-8 accent"
+            :loading="loading"
+            :disabled="loading"
+            @click="loader = 'loading'"
+            >Check out</v-btn>
         </v-container>
     </v-main>
 </template>
@@ -35,8 +42,20 @@ import gql from 'graphql-tag'
 export default {
     data() {
         return {
+            loader: null,
+            loading: false,
             carts: [this.$store.state.carts]
         }
+    },
+    watch: {
+      loader () {
+        const l = this.loader
+        this[l] = !this[l]
+
+        setTimeout(() => (this[l] = false), 3000)
+
+        this.loader = null
+      },
     },
     methods: {
         insertOrder() {
@@ -55,6 +74,6 @@ export default {
                 }`
             })
         }
-    }
+    },
 }
 </script>
