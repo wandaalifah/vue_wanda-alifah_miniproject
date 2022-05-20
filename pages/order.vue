@@ -8,10 +8,9 @@
                 </v-flex>
                 <v-flex>
                     <v-btn
-                        class="ma-2"
+                        class="ma-2 accent"
                         :loading="loading"
                         :disabled="loading"
-                        color="secondary"
                         @click="loader = 'loading', showDetail(insertedCode)"
                     >Submit</v-btn>
                 </v-flex>

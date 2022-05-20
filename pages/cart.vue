@@ -24,6 +24,7 @@
                     </v-list-item-action>
                 </v-list-item>
             </v-card>
+            <h2>Total :</h2>
         </v-container>
     </v-main>
 </template>
